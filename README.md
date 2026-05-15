@@ -1,4 +1,4 @@
-# Everything Gemini Code
+# Everything Google Code
 
 ![Everything Gemini Code — the performance system for AI agent harnesses](assets/hero.png)
 
