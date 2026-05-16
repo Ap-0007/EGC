@@ -1,0 +1,47 @@
+{
+  "name": "everything-gemini",
+  "version": "1.0.0",
+  "description": "EGC — Everything Gemini Code. Multi-harness AI coding plugin ecosystem.",
+  "author": "Felipe Marzochi <fmarzochi@gmail.com> (https://github.com/Fmarzochi)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fmarzochi/everything-gemini.git"
+  },
+  "homepage": "https://github.com/Fmarzochi/everything-gemini",
+  "bugs": {
+    "url": "https://github.com/Fmarzochi/everything-gemini/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "scripts/egc.js",
+  "bin": {
+    "egc": "scripts/egc.js"
+  },
+  "scripts": {
+    "test": "node tests/run-all.js",
+    "test:state-store": "node tests/lib/state-store.test.js",
+    "test:hooks": "node tests/hooks/hooks.test.js",
+    "doctor": "node scripts/doctor.js",
+    "bootstrap": "node scripts/bootstrap-state-db.js"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "argparse": "^2.0.1",
+    "js-yaml": "^4.1.1",
+    "sql.js": "^1.10.0"
+  },
+  "keywords": [
+    "egc",
+    "everything-gemini",
+    "ai",
+    "coding",
+    "agent",
+    "gemini",
+    "claude",
+    "openai",
+    "hooks",
+    "orchestration"
+  ]
+}

@@ -1,0 +1,1 @@
+/home/fmarzochi/Projects/everything-gemini/agents/chief-of-staff.md
