@@ -6,7 +6,7 @@ Because EGC operates as a structured engineering platform, contributions must al
 
 > **EGC — Everything Gemini Code**  
 > **Desenvolvido por Felipe Marzochi**  
-> **@FEMARZOCHI**  
+> **@MarzochiFelipe**  
 > **https://github.com/Fmarzochi/everything-gemini**  
 > **© Todos os direitos reservados**
 

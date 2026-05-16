@@ -1,0 +1,21 @@
+{
+  "name": "egc",
+  "interface": {
+    "displayName": "Everything Gemini Code"
+  },
+  "plugins": [
+    {
+      "name": "egc",
+      "version": "1.0.0",
+      "source": {
+        "source": "local",
+        "path": "../.."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

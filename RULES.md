@@ -4,7 +4,7 @@ These rules govern the **Everything Gemini Code (EGC)** AI operating system and 
 
 > **EGC — Everything Gemini Code**  
 > **Desenvolvido por Felipe Marzochi**  
-> **@FEMARZOCHI**  
+> **@MarzochiFelipe**  
 > **https://github.com/Fmarzochi/everything-gemini**  
 > **© Todos os direitos reservados**
 

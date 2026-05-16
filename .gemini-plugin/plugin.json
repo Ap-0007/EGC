@@ -1,0 +1,51 @@
+{
+  "name": "everything-gemini",
+  "version": "1.0.0",
+  "description": "Battle-tested Gemini Code plugin for engineering teams — 48 agents, 182 skills, 68 legacy command shims, production-ready hooks, and selective install workflows evolved through continuous real-world use",
+  "author": {
+    "name": "Felipe Marzochi",
+    "url": "https://www.linkedin.com/in/felipemarzochi/"
+  },
+  "homepage": "https://egc.tools",
+  "repository": "https://github.com/Fmarzochi/everything-gemini",
+  "license": "MIT",
+  "keywords": [
+    "everything-gemini",
+    "agents",
+    "skills",
+    "hooks",
+    "rules",
+    "tdd",
+    "code-review",
+    "security",
+    "workflow",
+    "automation",
+    "best-practices"
+  ],
+  "mcpServers": {},
+  "agents": {
+    "test": {
+      "description": "Test subagent",
+      "instructions": "agents/test.md"
+    }
+  },
+  "skills": [
+    "./skills/ai/",
+    "./skills/architecture/",
+    "./skills/automation/",
+    "./skills/backend/",
+    "./skills/devops/",
+    "./skills/docs/",
+    "./skills/frontend/",
+    "./skills/general/",
+    "./skills/general_part2/",
+    "./skills/integrations/",
+    "./skills/language/",
+    "./skills/security/",
+    "./skills/testing/",
+    "./skills/workflows/"
+  ],
+  "commands": [
+    "./commands/"
+  ]
+}

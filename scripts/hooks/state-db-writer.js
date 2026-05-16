@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+const os = require('os');
+
+function resolveStateDbPath() {
+  const home = process.env.HOME || os.homedir();
+  return path.join(home, '.gemini', 'egc', 'state.db');
+}
+
+async function main() {
+  let raw = '';
+  try {
+    raw = fs.readFileSync(0, 'utf8');
+  } catch (_) {}
+
+  if (!raw.trim()) return;
+
+  let payload;
+  try {
+    payload = JSON.parse(raw);
+  } catch (_) {
+    return;
+  }
+
+  const dbPath = resolveStateDbPath();
+  if (!fs.existsSync(dbPath)) return;
+
+  let createStateStore;
+  try {
+    ({ createStateStore } = require(path.join(__dirname, '..', 'lib', 'state-store', 'index.js')));
+  } catch (_) {
+    return;
+  }
+
+  let store;
+  try {
+    store = await createStateStore({ dbPath });
+  } catch (_) {
+    return;
+  }
+
+  try {
+    await store.insertRuntimeEvent({
+      id: crypto.randomUUID(),
+      sessionId: payload.session_id || process.env.EGC_SESSION_ID || process.env.ECC_SESSION_ID || null,
+      eventType: payload.event_type || payload.type || payload.hook_event_name || 'observe',
+      payload,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (_) {
+  } finally {
+    try { store.close(); } catch (_) {}
+  }
+}
+
+main().catch(() => {}).finally(() => process.exit(0));

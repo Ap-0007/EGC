@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EGC Runtime Map Schema",
+  "description": "Master registry for EGC skills and agents",
+  "type": "object",
+  "required": ["generatedAt", "os", "projectRoot", "stats", "skills", "agents"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "os": { "type": "string", "enum": ["linux", "darwin", "win32"] },
+    "projectRoot": { "type": "string" },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "hotSkills": { "type": "integer" },
+        "coldSkills": { "type": "integer" },
+        "hotAgents": { "type": "integer" },
+        "coldAgents": { "type": "integer" }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "namespace", "physicalPath", "targetLink", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "namespace": { "type": "string" },
+          "physicalPath": { "type": "string" },
+          "targetLink": { "type": "string" },
+          "status": { "type": "string", "enum": ["cold", "hot", "shadowed"] },
+          "runtime": { 
+            "type": "array", 
+            "items": { "type": "string", "enum": ["python", "node", "shell"] } 
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "physicalPath", "targetLink", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "physicalPath": { "type": "string" },
+          "targetLink": { "type": "string" },
+          "status": { "type": "string", "enum": ["cold", "hot", "shadowed"] }
+        }
+      }
+    }
+  }
+}

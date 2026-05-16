@@ -69,7 +69,7 @@ The EGC project is maintained independently. Security updates are managed as par
 
 ### Maintainer
 **Felipe Marzochi**  
-[GitHub](https://github.com/Fmarzochi) | [LinkedIn](https://www.linkedin.com/in/felipemarzochi/)
+[GitHub](https://github.com/Fmarzochi) | [LinkedIn](https://www.linkedin.com/in/felipemarzochi/) | [X](https://x.com/MarzochiFelipe)
 
 ### Security Contact
 For all security-related inquiries or vulnerability disclosures, contact:
