@@ -15,7 +15,6 @@ const {
   isHookEnabled,
 } = require('../../scripts/lib/hook-flags');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -52,7 +51,6 @@ function withEnv(vars, fn) {
   }
 }
 
-// Test suite
 function runTests() {
   console.log('\n=== Testing hook-flags.js ===\n');
 

@@ -14,7 +14,6 @@ const { SkillCreateOutput } = require('../../scripts/skill-create-output');
 // we test them indirectly through the class methods, plus test the
 // exported class directly.
 
-// Test helper
 function test(name, fn) {
   try {
     fn();

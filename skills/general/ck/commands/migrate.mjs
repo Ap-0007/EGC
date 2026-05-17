@@ -134,7 +134,6 @@ for (const [projectPath, info] of Object.entries(projects)) {
     const leftOffRaw    = extractSection(contextMd, 'Where I Left Off') || '';
     const leftOffParsed = parseLeftOff(leftOffRaw);
 
-    // Build sessions from parsed left-off blocks (may be multiple)
     const sessions = leftOffParsed.map((lo, idx) => ({
       id: idx === leftOffParsed.length - 1 && meta.lastSessionId
         ? meta.lastSessionId.slice(0, 8)

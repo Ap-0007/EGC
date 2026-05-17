@@ -19,7 +19,6 @@ const modulesSchemaPath = path.join(repoRoot, 'schemas', 'install-modules.schema
 const profilesSchemaPath = path.join(repoRoot, 'schemas', 'install-profiles.schema.json');
 const componentsSchemaPath = path.join(repoRoot, 'schemas', 'install-components.schema.json');
 
-// Test helpers
 function test(name, fn) {
   try {
     fn();

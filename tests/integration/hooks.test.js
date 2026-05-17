@@ -16,7 +16,6 @@ const os = require('os');
 const { spawn } = require('child_process');
 const REPO_ROOT = path.join(__dirname, '..', '..');
 
-// Test helper
 function _test(name, fn) {
   try {
     fn();
@@ -71,7 +70,6 @@ function runHookWithInput(scriptPath, input = {}, env = {}, timeoutMs = 10000) {
       }
     });
 
-    // Send JSON input on stdin (simulating Gemini Code hook invocation)
     if (input && Object.keys(input).length > 0) {
       proc.stdin.write(JSON.stringify(input));
     }
@@ -223,7 +221,6 @@ function createTestDir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'hook-integration-test-'));
 }
 
-// Clean up test directory
 function cleanupTestDir(testDir) {
   fs.rmSync(testDir, { recursive: true, force: true });
 }
@@ -266,7 +263,6 @@ function getHookCommandById(hooks, lifecycle, hookId) {
   return hookGroup.hooks[0].command;
 }
 
-// Test suite
 async function runTests() {
   console.log('\n=== Hook Integration Tests ===\n');
 

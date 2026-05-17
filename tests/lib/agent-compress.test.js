@@ -207,7 +207,6 @@ function runTests() {
     });
     assert.strictEqual(result.agents.length, 1);
     assert.strictEqual(result.agents[0].name, 'other');
-    // Clean up
     fs.unlinkSync(path.join(tmpDir, 'other-agent.md'));
   })) passed++; else failed++;
 

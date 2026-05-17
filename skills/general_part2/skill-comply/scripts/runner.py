@@ -71,7 +71,6 @@ def _safe_sandbox_dir(scenario_id: str) -> Path:
     """Sanitize scenario ID and ensure path stays within sandbox base."""
     safe_id = re.sub(r"[^a-zA-Z0-9\-_]", "_", scenario_id)
     path = SANDBOX_BASE / safe_id
-    # Validate path stays within sandbox base (raises ValueError on traversal)
     path.resolve().relative_to(SANDBOX_BASE.resolve())
     return path
 

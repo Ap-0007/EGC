@@ -13,7 +13,6 @@ const { spawnSync } = require('child_process');
 
 const utils = require('../../scripts/lib/utils');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -27,7 +26,6 @@ function test(name, fn) {
   }
 }
 
-// Test suite
 function runTests() {
   const rocketParty = String.fromCodePoint(0x1F680, 0x1F389);
   const partyEmoji = String.fromCodePoint(0x1F389);
@@ -644,7 +642,6 @@ function runTests() {
   })) passed++; else failed++;
 
   if (test('getGitModifiedFiles skips invalid patterns', () => {
-    // Mix of valid and invalid patterns — should not throw
     const files = utils.getGitModifiedFiles(['(unclosed', '\\.js$', '[invalid']);
     assert.ok(Array.isArray(files));
   })) passed++; else failed++;
@@ -1858,7 +1855,6 @@ function runTests() {
       const count = utils.countInFile(testFile, /(?<word>foo)/);
       assert.strictEqual(count, 3,
         'Named capture group should not inflate count — match(g) returns full matches only');
-      // Compare with plain pattern
       const plainCount = utils.countInFile(testFile, /foo/);
       assert.strictEqual(plainCount, 3, 'Plain regex should also find 3 matches');
       assert.strictEqual(count, plainCount,
@@ -1905,7 +1901,6 @@ function runTests() {
         'File should be created by appendFile');
       assert.strictEqual(utils.readFile(nestedPath), 'first line\n',
         'Content should match what was appended');
-      // Append again to verify it adds to existing file
       utils.appendFile(nestedPath, 'second line\n');
       assert.strictEqual(utils.readFile(nestedPath), 'first line\nsecond line\n',
         'Second append should add to existing file');

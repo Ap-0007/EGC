@@ -15,7 +15,6 @@ const { spawnSync } = require('child_process');
 
 const evaluateScript = path.join(__dirname, '..', '..', 'scripts', 'hooks', 'evaluate-session.js');
 
-// Test helpers
 function test(name, fn) {
   try {
     fn();

@@ -98,7 +98,6 @@ function getSessionStartAdditionalContext(stdout) {
   return payload.hookSpecificOutput.additionalContext;
 }
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -177,7 +176,6 @@ function createTestDir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'hooks-test-'));
 }
 
-// Clean up test directory
 function cleanupTestDir(testDir) {
   const retryableCodes = new Set(['EPERM', 'EBUSY', 'ENOTEMPTY']);
 
@@ -314,7 +312,6 @@ function runPatchedRunAll(tempRoot) {
   };
 }
 
-// Test suite
 async function runTests() {
   console.log('\n=== Testing Hook Scripts ===\n');
 
@@ -804,7 +801,6 @@ async function runTests() {
         await runScript(path.join(scriptsDir, 'session-end.js'), stdinJson, {
           HOME: isoHome,
           USERPROFILE: isoHome,
-          // Clear EGC_SESSION_ID so parent-process env does not leak into the
           // child and the test deterministically exercises the transcript_path
           // branch (getSessionIdShort() is the alternative path that is not
           // exercised here).

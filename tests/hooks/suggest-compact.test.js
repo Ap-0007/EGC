@@ -15,7 +15,6 @@ const { spawnSync } = require('child_process');
 
 const compactScript = path.join(__dirname, '..', '..', 'scripts', 'hooks', 'suggest-compact.js');
 
-// Test helpers
 function test(name, fn) {
   try {
     fn();

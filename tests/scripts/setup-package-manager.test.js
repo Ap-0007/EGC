@@ -33,7 +33,6 @@ function run(args = [], env = {}) {
   }
 }
 
-// Test helper
 function test(name, fn) {
   try {
     fn();

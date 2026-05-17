@@ -21,7 +21,6 @@ const {
   getElixirDeps
 } = require('../../scripts/lib/project-detect');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -38,7 +37,6 @@ function createTempDir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'egc-test-'));
 }
 
-// Clean up temp directory
 function cleanupDir(dir) {
   try {
     fs.rmSync(dir, { recursive: true, force: true });

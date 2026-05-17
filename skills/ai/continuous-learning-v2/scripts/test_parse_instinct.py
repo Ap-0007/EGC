@@ -350,7 +350,6 @@ def test_detect_project_from_env(patch_globals, monkeypatch, tmp_path):
     fake_repo.mkdir()
     monkeypatch.setenv("GEMINI_PROJECT_DIR", str(fake_repo))
 
-    # Mock git remote to return a URL
     def mock_run(cmd, **kwargs):
         if "rev-parse" in cmd:
             return SimpleNamespace(returncode=0, stdout=str(fake_repo) + "\n", stderr="")

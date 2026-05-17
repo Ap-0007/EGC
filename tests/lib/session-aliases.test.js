@@ -23,7 +23,6 @@ process.env.USERPROFILE = tmpHome; // Windows: os.homedir() uses USERPROFILE
 
 const aliases = require('../../scripts/lib/session-aliases');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();

@@ -11,7 +11,6 @@ const os = require('os');
 
 const pm = require('../../scripts/lib/package-manager');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -30,7 +29,6 @@ function createTestDir() {
   return testDir;
 }
 
-// Clean up test directory
 function cleanupTestDir(testDir) {
   fs.rmSync(testDir, { recursive: true, force: true });
 }
@@ -62,7 +60,6 @@ function withIsolatedHome(fn) {
   }
 }
 
-// Test suite
 function runTests() {
   console.log('\n=== Testing package-manager.js ===\n');
 

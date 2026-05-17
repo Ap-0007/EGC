@@ -11,7 +11,6 @@ const os = require('os');
 
 const sessionManager = require('../../scripts/lib/session-manager');
 
-// Test helper
 function test(name, fn) {
   try {
     fn();
@@ -1643,7 +1642,6 @@ src/main.ts
     assert.strictEqual(sessionManager.getSessionById(null), null);
   })) passed++; else failed++;
 
-  // Cleanup test environment for Rounds 95-98 that needed sessions
   // (Round 98: parseSessionFilename below doesn't need sessions)
   process.env.HOME = origHome2;
   if (origUserProfile2 !== undefined) {
@@ -2405,7 +2403,6 @@ file.ts
       process.env.USERPROFILE = tmpDir; // Windows: os.homedir() uses USERPROFILE
       delete process.env.GEMINI_DIR;
 
-      // Clear require cache for fresh module with new HOME
       delete require.cache[require.resolve('../../scripts/lib/utils')];
       delete require.cache[require.resolve('../../scripts/lib/session-manager')];
       const freshSM = require('../../scripts/lib/session-manager');

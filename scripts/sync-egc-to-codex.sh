@@ -204,7 +204,6 @@ else
       $0 == end   { skip = 0; next }
       !skip        { print }
     ' "$AGENTS_FILE" > "$tmp"
-    # Write through the path (preserves symlinks) instead of mv
     cat "$tmp" > "$AGENTS_FILE"
     rm -f "$tmp" "$egc_tmp"
   }

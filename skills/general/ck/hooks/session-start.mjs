@@ -84,7 +84,6 @@ function main() {
   const cwd = process.env.PWD || process.cwd();
   const sessionId = readSessionId();
 
-  // Load skill (always inject — now only ~50 lines)
   const skill = existsSync(SKILL_FILE) ? readFileSync(SKILL_FILE, 'utf8') : '';
 
   const projects = readJson(PROJECTS_FILE) || {};
@@ -127,7 +126,6 @@ function main() {
 
       // ── Unsaved session detection ─────────────────────────────────────────
       if (prevSession?.sessionId && prevSession.sessionId !== sessionId) {
-        // Check if previous session ID exists in sessions array
         const alreadySaved = context.sessions?.some(s => s.id === prevSession.sessionId);
         if (!alreadySaved) {
           summaryLines.push(`WARNING Last session wasn't saved — run /ck:save to capture it`);

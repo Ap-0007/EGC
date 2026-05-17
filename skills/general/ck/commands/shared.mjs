@@ -76,7 +76,6 @@ export function resolveContext(arg, cwd) {
   const entries = Object.entries(projects); // [path, {name, contextDir, lastUpdated}]
 
   if (!arg) {
-    // Match by cwd
     const entry = projects[cwd];
     if (!entry) return null;
     const context = loadContext(entry.contextDir);

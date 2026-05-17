@@ -41,7 +41,6 @@ fi
 
 mkdir -p "$LEARNED_SKILLS_PATH"
 
-# Get transcript path from stdin JSON (Gemini Code hook input)
 # Falls back to env var for backwards compatibility
 stdin_data=$(cat)
 transcript_path=$(echo "$stdin_data" | grep -o '"transcript_path":"[^"]*"' | head -1 | cut -d'"' -f4)

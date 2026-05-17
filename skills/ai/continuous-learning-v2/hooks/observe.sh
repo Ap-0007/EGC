@@ -361,7 +361,6 @@ fi
 
 # Check both project-scoped AND global PID files (with stale PID recovery)
 if [ "$OBSERVER_ENABLED" = "true" ]; then
-  # Clean up stale PID files first
   _CHECK_OBSERVER_RUNNING "${PROJECT_DIR}/.observer.pid" || true
   _CHECK_OBSERVER_RUNNING "${CONFIG_DIR}/.observer.pid" || true
 

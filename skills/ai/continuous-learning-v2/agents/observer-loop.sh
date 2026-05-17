@@ -218,7 +218,6 @@ PROMPT
     max_turns=20
   fi
 
-  # Ensure CWD is PROJECT_DIR so the relative analysis_relpath resolves correctly
   # on all platforms, not just when the observer happens to be launched from the project root.
   cd "$PROJECT_DIR" || { echo "[$(date)] Failed to cd to PROJECT_DIR ($PROJECT_DIR), skipping analysis" >> "$LOG_FILE"; rm -f "$analysis_file"; return; }
 

@@ -129,7 +129,6 @@ function saveAliases(aliases) {
       }
     }
 
-    // Clean up temp file (best-effort)
     try {
       if (fs.existsSync(tempPath)) {
         fs.unlinkSync(tempPath);
@@ -335,7 +334,6 @@ function renameAlias(oldAlias, newAlias) {
     };
   }
 
-  // Restore old alias and remove new alias on failure
   data.aliases[oldAlias] = aliasData;
   delete data.aliases[newAlias];
   // Attempt to persist the rollback
