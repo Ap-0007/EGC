@@ -227,6 +227,8 @@ snapshots/
 *.sqlite
 *.sqlite3
 *.db
+*.db-wal
+*.db-shm
 
 # =========================================================
 # LOCAL MCP / TOOLING
@@ -290,9 +292,14 @@ OPENAI_INTERNAL.md
 # OPERATIONAL DATA (Hardened)
 # =========================================================
 .sessions/
+egc_settings.json
 *.log
 forensic_*.txt
 test_full_output.log
+archaeology/
+journals/
+traces/
+vault\ exports/
 
 # =========================================================
 # OPTIONAL — IGNORE ENTIRE AGENT / SKILL ECOSYSTEM
@@ -423,7 +430,7 @@ test_full_output.log
 # =========================================================
 !.markdownlint.json
 !.npmignore
-!.mcp.json
+.mcp.json
 !.tool-versions
 !.yarnrc.yml
 !VERSION
@@ -510,6 +517,9 @@ live_execution_test.py.log
 
 # Internal audit report (working document, not for upload)
 docs/auditoria_completa.md
+
+# Internal architectural investigation journal (local-only, not for commit)
+docs/internal/
 
 # =========================================================
 # END
