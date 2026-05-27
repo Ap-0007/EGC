@@ -193,4 +193,4 @@ The branch `legacy-runtime` preserves the full historical architecture for anyon
 
 ## License
 
-MIT — built by [Felipe Marzochi](https://github.com/Fmarzochi)
+[MIT](LICENSE)
