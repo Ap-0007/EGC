@@ -325,6 +325,7 @@ function probeCommandServer(serverName, config) {
     let stderr = '';
     let done = false;
     let timer = null;
+    let exited = false;
 
     function finish(result) {
       if (done) return;
@@ -360,6 +361,7 @@ function probeCommandServer(serverName, config) {
     });
 
     child.on('error', error => {
+      exited = true;
       finish({
         ok: false,
         statusCode: null,
@@ -368,6 +370,7 @@ function probeCommandServer(serverName, config) {
     });
 
     child.on('exit', (code, signal) => {
+      exited = true;
       finish({
         ok: false,
         statusCode: code,
@@ -376,10 +379,8 @@ function probeCommandServer(serverName, config) {
     });
 
     timer = setTimeout(() => {
-      // A fast-crashing stdio server can finish before the timer callback runs
-      // on a loaded machine. Check the process state again before classifying it
-      // as healthy on timeout.
-      if (child.exitCode !== null || child.signalCode !== null) {
+      // If the process already exited (exit event fired before timer), mark unhealthy.
+      if (exited || child.exitCode !== null || child.signalCode !== null) {
         finish({
           ok: false,
           statusCode: child.exitCode,
@@ -388,25 +389,37 @@ function probeCommandServer(serverName, config) {
         return;
       }
 
-      try {
-        child.kill('SIGTERM');
-      } catch {
-        // ignore
-      }
-
-      setTimeout(() => {
+      // The process appears alive at timeout. On loaded machines or with slow-starting
+      // runtimes (e.g. Node.js on cold CI), the process may still be in its startup
+      // phase and about to exit with a non-zero code. Allow an additional grace window
+      // equal to timeoutMs before declaring healthy — any non-zero exit during the
+      // grace period is treated as an early failure, preserving correct classification
+      // without blocking indefinitely.
+      const graceTimer = setTimeout(() => {
+        if (done) return;
+        // Process survived the full grace window — healthy stdio server.
         try {
-          child.kill('SIGKILL');
+          child.kill('SIGTERM');
         } catch {
           // ignore
         }
-      }, 200).unref?.();
+        setTimeout(() => {
+          try {
+            child.kill('SIGKILL');
+          } catch {
+            // ignore
+          }
+        }, 200).unref?.();
+        finish({
+          ok: true,
+          statusCode: null,
+          reason: `${serverName} accepted a new stdio process`
+        });
+      }, timeoutMs);
 
-      finish({
-        ok: true,
-        statusCode: null,
-        reason: `${serverName} accepted a new stdio process`
-      });
+      if (typeof graceTimer.unref === 'function') {
+        graceTimer.unref();
+      }
     }, timeoutMs);
 
     if (typeof timer.unref === 'function') {

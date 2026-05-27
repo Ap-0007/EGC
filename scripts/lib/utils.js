@@ -386,8 +386,8 @@ function commandExists(cmd) {
 
   try {
     if (isWindows) {
-      // Use spawnSync to avoid shell interpolation
-      const result = spawnSync('where', [cmd], { stdio: 'pipe' });
+      // shell:true inherits PATHEXT so `where npm` resolves npm.cmd/.exe correctly
+      const result = spawnSync('where', [cmd], { stdio: 'pipe', shell: true });
       return result.status === 0;
     } else {
       const result = spawnSync('which', [cmd], { stdio: 'pipe' });
