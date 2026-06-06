@@ -131,7 +131,7 @@ process.stdin.on('end', () => {
 function runMain() {
   main().catch(() => {
     console.error('[SessionEnd] Unexpected error');
-    process.exit(0);
+    process.exit(1);
   });
 }
 
