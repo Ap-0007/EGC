@@ -86,8 +86,12 @@ class ClaudeProvider(LLMProvider):
                         )
                     ]
 
+                        if response.content and hasattr(response.content[0], 'text'):
+                text = response.content[0].text
+            else:
+                text = ''
             return LLMOutput(
-                content=response.content[0].text if response.content else "",
+                content=text,
                 tool_calls=tool_calls,
                 model=response.model,
                 usage={
